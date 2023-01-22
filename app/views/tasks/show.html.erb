@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><%= @task.title %></h2>
+        <%= link_to edit_task_path(@task) do %>
+     <i class="fa fa-pencil"></i> Edit this task
+    <% end %>
+  </div>
+
+  <p class="well"><%= @task.details %></p>
+
+
+  <% if @task.completed? %>
+    <i class="fa-regular fa-square-check"></i> This task is completed
+  <% else %>
+    <i class="fa-regular fa-square"></i> This task not completed yet
+  <% end %>
+
+  <hr>
+
+  <%= link_to "Delete",
+    task_path(@task),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+
+  <%= link_to tasks_path do %>
+    <i class="fa-solid fa-arrow-rotate-left"></i> Back to list
+  <% end %>
+</div>
